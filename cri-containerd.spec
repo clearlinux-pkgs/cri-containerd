@@ -1,6 +1,6 @@
 Name     : cri-containerd
 Version  : 0
-Release  : 4
+Release  : 5
 URL      : https://github.com/containerd/cri-containerd/archive/v1.0.0-beta.1.tar.gz
 Source0  : https://github.com/containerd/cri-containerd/archive/v1.0.0-beta.1.tar.gz
 Summary  : Containerd-based implementation of Kubernetes Container Runtime Interface
@@ -33,10 +33,10 @@ dev components for the containerd package.
 %setup -q -n cri-containerd-1.0.0-beta.1
 
 %build
-export GOPATH=/go AUTO_GOPATH=1
-mkdir -p /go/src/github.com/kubernetes-incubator/
-ln -s /builddir/build/BUILD/%{name}-1.0.0-beta.1 /go/src/github.com/kubernetes-incubator/cri-containerd
-pushd /go/src/github.com/kubernetes-incubator/cri-containerd
+export GOPATH=$HOME/go AUTO_GOPATH=1
+mkdir -p $HOME/go/src/github.com/kubernetes-incubator/
+ln -s /builddir/build/BUILD/%{name}-1.0.0-beta.1 $HOME/go/src/github.com/kubernetes-incubator/cri-containerd
+pushd $HOME/go/src/github.com/kubernetes-incubator/cri-containerd
 make V=1 %{?_smp_mflags} BUILD_TAGS='seccomp'
 popd
 
